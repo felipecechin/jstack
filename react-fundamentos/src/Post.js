@@ -1,11 +1,11 @@
 import React from "react";
+import PostHeader from "./PostHeader";
 
 export default function Post({ post, onRemove }) {
   return (
     <>
       <article>
-        <strong>{post.read ? <s>{post.title}</s> : post.title}</strong>
-        <button onClick={onRemove}>Remover</button>
+        <PostHeader onRemove={onRemove} title={post.title} read={post.read} />
         <br />
         <small>{post.subtitle}</small>
         <br />

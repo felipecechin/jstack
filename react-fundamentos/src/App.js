@@ -11,6 +11,7 @@ function App() {
       subtitle: "Aprendendo React com Alura",
       likes: 10,
       read: false,
+      removed: false,
     },
     {
       id: Math.random(),
@@ -18,6 +19,7 @@ function App() {
       subtitle: "Aprendendo JavaScript com Alura",
       likes: 20,
       read: true,
+      removed: true,
     },
     {
       id: Math.random(),
@@ -25,6 +27,7 @@ function App() {
       subtitle: "Aprendendo CSS com Alura",
       likes: 30,
       read: false,
+      removed: false,
     },
     {
       id: Math.random(),
@@ -32,6 +35,7 @@ function App() {
       subtitle: "Aprendendo HTML com Alura",
       likes: 40,
       read: true,
+      removed: false,
     },
   ]);
 
@@ -49,7 +53,14 @@ function App() {
   }
 
   function handleRemovePost(id) {
-    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
+    setPosts((prevPosts) => {
+      return prevPosts.map((post) => {
+        if (post.id === id) {
+          return { ...post, removed: true };
+        }
+        return post;
+      });
+    });
   }
 
   return (
